@@ -1,0 +1,74 @@
+﻿<md-button class="md-icon-button md-primary" aria-label="Back to Dashboard"
+           ng-href="#dashboard">
+    <md-icon md-svg-icon="../../assets/image/home168.svg"></md-icon>
+</md-button>
+
+<div>
+    <form name="bandForm">        
+        <md-content layout-gt-sm="row" layout-padding>
+            <div>
+                <md-input-container>
+                    <label>Name</label>
+                    <input name="bandName" required
+                           ng-model="ctrl.band.name"
+                           ng-pattern="/^[A-Za-z ]+$/">
+                    <div ng-messages="bandForm.bandName.$error" role="alert" multiple>
+                        <div ng-message="required">required</div>
+                        <div ng-message="pattern">only letters</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Rating</label>
+                    <input name="bandRating" type="number" required
+                           ng-model="ctrl.band.rating"
+                           ng-pattern="/^[1-5]$/">
+                    <div ng-messages="bandForm.bandRating.$error" role="alert" multiple>
+                        <div ng-message="required">required</div>
+                        <div ng-message="pattern">values between 1-5</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <span>Rating {{ctrl.band.rating}}</span>
+                    <md-slider flex="" min="1" max="5" ng-model="ctrl.band.rating" aria-label="red" class=""></md-slider>
+                </md-input-container>                 
+        </md-content>      
+        <div layout="row">           
+            <md-button class="md-raised md-primary"
+                       ng-disabled="bandForm.$invalid"
+                       ng-click="ctrl.submit()">
+                Submit
+            </md-button>
+            <md-button class="md-raised md-warn"
+                       ng-if="ctrl.band.id"
+                       ng-click="ctrl.delete()">
+                Delete
+                </md-button>
+        </div>
+    </form>
+   
+    <md-switch aria-label="Switch 1"
+               ng-model="ctrl.showAlbums"
+               ng-if="ctrl.band.albums.length">Show Albums</md-switch>
+
+    <md-content class="md-padding" ng-if="ctrl.showAlbums">
+        <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+            <md-tab ng-repeat="album in ctrl.band.albums" label="{{album.name}}">
+                <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
+                    <!--Id:<div ng-bind="album.id"></div>-->
+                    Year:<div ng-bind="album.year"></div>
+                    Rating:<div ng-bind="album.rating"></div>
+                    <br />
+                    <md-button class="md-primary md-raised" 
+                               ng-click="ctrl.removeAlbumFromCarousel(album)" 
+                               ng-disabled="!ctrl.band.albums.length">Hide Album</md-button>
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+
+
+
+
+
+    <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+</div>

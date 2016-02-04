@@ -1,0 +1,6 @@
+C:\steven\bandApp\bandApp\bin\bandApp.dll.config
+C:\steven\bandApp\bandApp\bin\bandApp.dll
+C:\steven\bandApp\bandApp\bin\bandApp.pdb
+C:\steven\bandApp\bandApp\obj\Debug\bandApp.dll
+C:\steven\bandApp\bandApp\obj\Debug\bandApp.pdb
+C:\steven\bandApp\bandApp\obj\Debug\bandApp.csprojResolveAssemblyReference.cache
